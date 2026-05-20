@@ -1,0 +1,2215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELTRIX — Мощные ПК для игр и работы</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #F5A000;
+    --gold-light: #FFB81C;
+    --dark: #111111;
+    --dark2: #1A1A1A;
+    --text: #222222;
+    --text-muted: #666666;
+    --border: #E5E5E5;
+    --white: #FFFFFF;
+    --bg: #F7F7F7;
+  }
+
+  .burger-btn { display: none; }
+  .mobile-nav { display: none; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    height: 64px;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+    flex: 1;
+  }
+
+  nav a {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+    white-space: nowrap;
+  }
+
+  nav a:hover, nav a.active { color: var(--text); }
+  nav a.active { color: var(--dark); border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+
+  .header-contacts {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .header-contacts .phone {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--dark);
+    display: block;
+    text-decoration: none;
+  }
+
+  .header-contacts .address {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    background: #F5F5F5;
+    padding: 0 40px;
+    overflow: hidden;
+    position: relative;
+    min-height: 420px;
+  }
+
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    align-items: center;
+    min-height: 420px;
+    gap: 40px;
+  }
+
+  .hero-content { padding: 60px 0; }
+
+  .hero-title {
+    font-size: 52px;
+    font-weight: 900;
+    line-height: 1.05;
+    color: var(--dark);
+    text-transform: uppercase;
+    letter-spacing: -1px;
+  }
+
+  .hero-title .accent { color: var(--gold); }
+
+  .hero-subtitle {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 14px;
+    line-height: 1.5;
+  }
+
+  .hero-badges {
+    display: flex;
+    gap: 28px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .hero-badge svg { flex-shrink: 0; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+    background: var(--gold);
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 32px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .hero-image {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .hero-image img {
+    max-height: 400px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.15));
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  /* PC placeholder image */
+  .pc-img-placeholder {
+    width: 380px;
+    height: 380px;
+    position: relative;
+  }
+
+  /* ─── FEATURES STRIP ─── */
+  .features-strip {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px;
+  }
+
+  .features-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+  }
+
+  .feature-label {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark);
+  }
+
+  /* ─── SECTION ─── */
+  section { padding: 60px 40px; }
+
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 32px;
+  }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: var(--dark);
+    position: relative;
+    padding-bottom: 10px;
+  }
+
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--gold);
+  }
+
+  .section-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color .2s;
+  }
+
+  .section-link:hover { color: var(--gold); }
+
+  /* ─── PRODUCT CARDS ─── */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  .product-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    padding: 24px 20px 20px;
+    transition: border-color .2s, box-shadow .2s, transform .2s;
+    cursor: pointer;
+  }
+
+  .product-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px rgba(245,160,0,0.12);
+    transform: translateY(-4px);
+  }
+
+  .product-name {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .product-desc {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .product-img-wrap {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px 0;
+  }
+
+  .product-img-wrap svg, .product-img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .product-price span { font-weight: 400; font-size: 14px; color: var(--text-muted); }
+
+  .btn-outline {
+    display: block;
+    width: 100%;
+    text-align: center;
+    border: 1.5px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background .2s, color .2s;
+    text-decoration: none;
+  }
+
+  .btn-outline:hover { background: var(--gold); color: var(--dark); }
+
+  /* ─── CTA BANNER ─── */
+  .cta-banner {
+    background: var(--bg);
+    padding: 0 40px;
+  }
+
+  .cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .cta-content {
+    padding: 50px 48px;
+    z-index: 1;
+  }
+
+  .cta-title {
+    font-size: 30px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+  }
+
+  .cta-sub {
+    font-size: 15px;
+    font-weight: 500;
+    color: #aaa;
+    margin-top: 8px;
+    margin-bottom: 28px;
+  }
+
+  .cta-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-image-inner {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--dark) 0%, transparent 40%),
+                url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80') center/cover no-repeat;
+    opacity: 0.6;
+  }
+
+  /* ─── WHY US ─── */
+  .why-us { background: var(--white); }
+
+  .why-title {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    text-align: center;
+    color: var(--dark);
+    margin-bottom: 40px;
+  }
+
+  .why-title .accent { color: var(--gold); }
+
+  .why-grid {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  .why-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 32px;
+    gap: 12px;
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+  }
+
+  .why-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+  }
+
+  .why-label {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--dark);
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 48px 40px 24px;
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+  }
+
+  .footer-logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    display: block;
+    text-decoration: none;
+    margin-bottom: 8px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+  }
+
+  .social-icon:hover { border-color: var(--gold); color: var(--gold); }
+
+  .footer-col-title {
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dark);
+    margin-bottom: 16px;
+  }
+
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+  .footer-col ul li a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-contact-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+  }
+
+  .footer-contact-icon { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+  .footer-contact-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+
+  .footer-contact-text a { color: var(--text-muted); text-decoration: none; }
+  .footer-contact-text a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 500;
+  }
+
+  /* ─── PC SVG Illustration ─── */
+  .pc-tower {
+    width: 300px;
+    height: 360px;
+  }
+
+  /* ─── Responsive: Tablet ─── */
+  @media (max-width: 960px) {
+    .header-inner { gap: 20px; }
+    nav { gap: 16px; }
+    nav a { font-size: 12px; }
+    .header-contacts .phone { font-size: 14px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-inner { grid-template-columns: 1fr; min-height: auto; }
+    .hero-image { display: none; }
+    .hero-content { padding: 48px 0; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .cta-inner { grid-template-columns: 1fr; }
+    .cta-image { display: none; }
+    .features-inner { gap: 24px; }
+    .why-item { padding: 16px 20px; }
+  }
+
+  /* ─── Responsive: Mobile ─── */
+  @media (max-width: 640px) {
+    /* Header — burger menu */
+    header { padding: 0 16px; position: sticky; top: 0; z-index: 200; }
+
+    .header-inner { height: 56px; gap: 0; justify-content: space-between; }
+
+    .logo { font-size: 20px; }
+
+    /* Hide desktop nav & contacts, show burger */
+    nav { display: none; }
+    .header-contacts { display: none; }
+
+    .burger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 36px;
+      height: 36px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-shrink: 0;
+    }
+
+    .burger-btn span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--dark);
+      transition: all 0.3s;
+      border-radius: 2px;
+    }
+
+    .burger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .burger-btn.open span:nth-child(2) { opacity: 0; }
+    .burger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Mobile nav drawer */
+    .mobile-nav {
+      position: fixed;
+      top: 56px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--white);
+      z-index: 199;
+      padding: 24px 24px 40px;
+      flex-direction: column;
+      gap: 0;
+      overflow-y: auto;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--gold); }
+
+    .mobile-nav-contacts {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mobile-nav-contacts a {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark);
+      text-decoration: none;
+      border: none;
+      padding: 0;
+    }
+
+    .mobile-nav-contacts span {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    /* Hero */
+    .hero { padding: 0 16px; }
+    .hero-content { padding: 36px 0 32px; }
+    .hero-title { font-size: 30px; letter-spacing: -0.5px; }
+    .hero-subtitle { font-size: 14px; }
+    .hero-badges { gap: 16px; }
+    .hero-badge { font-size: 11px; }
+    .btn-primary { font-size: 12px; padding: 13px 24px; }
+
+    /* Features */
+    .features-strip { padding: 20px 16px; }
+    .features-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .feature-item { gap: 8px; }
+    .feature-icon { width: 36px; height: 36px; }
+    .feature-label { font-size: 11px; }
+
+    /* Sections */
+    section { padding: 36px 16px; }
+
+    /* Catalog */
+    .section-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    .section-title { font-size: 20px; }
+    .products-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .product-card { padding: 16px 14px 14px; }
+    .product-name { font-size: 12px; }
+    .product-desc { font-size: 11px; }
+    .product-img-wrap { height: 130px; margin: 12px 0; }
+    .product-price { font-size: 15px; }
+    .btn-outline { font-size: 11px; padding: 9px; }
+
+    /* CTA */
+    .cta-banner { padding: 0 16px; }
+    .cta-content { padding: 32px 24px; }
+    .cta-title { font-size: 22px; }
+    .cta-sub { font-size: 13px; }
+
+    /* Why us */
+    .why-title { font-size: 20px; margin-bottom: 28px; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .why-item { padding: 16px 12px; min-width: unset; max-width: unset; }
+    .why-label { font-size: 12px; }
+
+    /* Footer */
+    footer { padding: 36px 16px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .footer-col-title { font-size: 12px; margin-bottom: 12px; }
+    .footer-col ul { gap: 8px; }
+
+    /* Calculator */
+    .calc-section { padding: 40px 16px; }
+    .calc-title { font-size: 22px; }
+    .calc-step-question { font-size: 17px; }
+    .calc-input-group { grid-template-columns: 1fr; }
+    .calc-summary-grid { grid-template-columns: 1fr; }
+    .calc-options { gap: 8px; }
+    .calc-option { font-size: 12px; padding: 10px 14px; }
+    .calc-progress { display: none; }
+    .btn-calc-next { font-size: 12px; padding: 12px 22px; }
+    .btn-calc-back { font-size: 11px; padding: 10px 16px; }
+    .calc-submit { font-size: 13px; padding: 16px; }
+    .calc-success-title { font-size: 20px; }
+  }
+
+  /* Extra small phones */
+  @media (max-width: 380px) {
+    .hero-title { font-size: 26px; }
+    .products-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .features-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ═══════════════════════════════
+     CALCULATOR SECTION
+  ═══════════════════════════════ */
+  .calc-section {
+    background: var(--dark);
+    padding: 70px 40px;
+  }
+
+  .calc-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .calc-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .calc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,160,0,0.12);
+    border: 1px solid rgba(245,160,0,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+
+  .calc-title {
+    font-size: 34px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  .calc-title .accent { color: var(--gold); }
+
+  .calc-subtitle {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+
+  /* Progress bar */
+  .calc-progress {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .calc-progress-track {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #2A2A2A;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  .calc-progress-fill {
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.4s ease;
+  }
+
+  .calc-step-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid #2A2A2A;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    color: #555;
+    flex-shrink: 0;
+    z-index: 1;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .calc-step-dot.done {
+    border-color: var(--gold);
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  .calc-step-dot.active {
+    border-color: var(--gold);
+    background: var(--dark);
+    color: var(--gold);
+    box-shadow: 0 0 0 4px rgba(245,160,0,0.15);
+  }
+
+  .calc-step-spacer { flex: 1; }
+
+  /* Step card */
+  .calc-step {
+    display: none;
+    animation: stepIn 0.35s ease;
+  }
+
+  .calc-step.active { display: block; }
+
+  @keyframes stepIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .calc-step-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .calc-step-question {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+
+  /* Option groups */
+  .calc-group-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #555;
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+
+  .calc-group-label:first-child { margin-top: 0; }
+
+  .calc-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .calc-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    border: 1.5px solid #2A2A2A;
+    background: #181818;
+    color: #aaa;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    user-select: none;
+    font-family: 'Montserrat', sans-serif;
+    white-space: nowrap;
+  }
+
+  .calc-option:hover {
+    border-color: rgba(245,160,0,0.5);
+    color: var(--white);
+    background: #1E1E1E;
+  }
+
+  .calc-option.selected {
+    border-color: var(--gold);
+    background: rgba(245,160,0,0.08);
+    color: var(--gold);
+  }
+
+  .calc-option .opt-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .calc-option.selected .opt-icon {
+    background: var(--gold);
+    border-color: var(--gold);
+  }
+
+  .calc-option.selected .opt-icon::after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--dark);
+  }
+
+  /* HDD conditional */
+  .hdd-sub {
+    display: none;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #2A2A2A;
+  }
+
+  .hdd-sub.visible { display: block; }
+
+  /* Textarea */
+  .calc-textarea {
+    width: 100%;
+    min-height: 100px;
+    background: #181818;
+    border: 1.5px solid #2A2A2A;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 16px;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .calc-textarea::placeholder { color: #444; }
+  .calc-textarea:focus { border-color: rgba(245,160,0,0.5); }
+
+  .calc-textarea-hints {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .hint-tag {
+    padding: 5px 12px;
+    border: 1px solid #2A2A2A;
+    color: #555;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .hint-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Nav buttons */
+  .calc-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 36px;
+    gap: 16px;
+  }
+
+  .btn-calc-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px solid #2A2A2A;
+    color: #666;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-calc-back:hover { border-color: #444; color: #aaa; }
+
+  .btn-calc-next {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 14px 36px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-left: auto;
+  }
+
+  .btn-calc-next:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-calc-next:disabled { background: #2A2A2A; color: #444; cursor: default; transform: none; }
+
+  .calc-step-counter {
+    font-size: 12px;
+    font-weight: 600;
+    color: #444;
+  }
+
+  /* ─── CONTACT FORM (final step) ─── */
+  .calc-contact-step {
+    display: none;
+    animation: stepIn 0.35s ease;
+  }
+
+  .calc-contact-step.active { display: block; }
+
+  .calc-summary {
+    background: #181818;
+    border: 1px solid #2A2A2A;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+  }
+
+  .calc-summary-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .calc-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+  }
+
+  .calc-summary-item {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  .calc-summary-item strong {
+    color: #ccc;
+    font-weight: 600;
+  }
+
+  .calc-form-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .calc-form-sub {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 24px;
+  }
+
+  .calc-input-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .calc-input {
+    width: 100%;
+    background: #181818;
+    border: 1.5px solid #2A2A2A;
+    color: var(--white);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .calc-input::placeholder { color: #444; }
+  .calc-input:focus { border-color: rgba(245,160,0,0.5); }
+
+  .calc-submit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    padding: 18px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 8px;
+  }
+
+  .calc-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .calc-privacy {
+    text-align: center;
+    font-size: 11px;
+    color: #444;
+    margin-top: 10px;
+    font-weight: 500;
+  }
+
+  /* ─── SUCCESS STATE ─── */
+  .calc-success {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    animation: stepIn 0.4s ease;
+  }
+
+  .calc-success.active { display: block; }
+
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(245,160,0,0.1);
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  .calc-success-title {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .calc-success-sub {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0 auto 28px;
+  }
+
+  @media (max-width: 600px) {
+    .calc-section { padding: 50px 20px; }
+    .calc-title { font-size: 24px; }
+    .calc-input-group { grid-template-columns: 1fr; }
+    .calc-summary-grid { grid-template-columns: 1fr; }
+    .calc-options { gap: 8px; }
+    .calc-option { font-size: 12px; padding: 9px 14px; }
+    .calc-progress { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">VELTRIX</a>
+    <nav>
+      <a href="#" class="active">Главная</a>
+      <a href="#catalog">Каталог ПК</a>
+      <a href="#configurator">Сборка на заказ</a>
+      <a href="#delivery">Доставка</a>
+      <a href="#warranty">Гарантия</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header-contacts">
+      <a href="tel:+77005558088" class="phone">+7 700 555 80 88</a>
+      <div class="address">г. Алматы, Аксай-4, 44а</div>
+    </div>
+    <button class="burger-btn" id="burgerBtn" onclick="toggleMenu()" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav Drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#" onclick="closeMenu()">Главная</a>
+  <a href="#catalog" onclick="closeMenu()">Каталог ПК</a>
+  <a href="#configurator" onclick="closeMenu()">Сборка на заказ</a>
+  <a href="#delivery" onclick="closeMenu()">Доставка</a>
+  <a href="#warranty" onclick="closeMenu()">Гарантия</a>
+  <a href="#contacts" onclick="closeMenu()">Контакты</a>
+  <div class="mobile-nav-contacts">
+    <a href="tel:+77005558088">+7 700 555 80 88</a>
+    <span>г. Алматы, Аксай-4, 44а</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="accent">Мощные ПК</span><br>
+        для игр и работы
+      </h1>
+      <p class="hero-subtitle">Сборка компьютеров на заказ<br>в Алматы с гарантией и поддержкой</p>
+
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="13" stroke="#F5A000" stroke-width="1.5"/>
+            <path d="M9 14l3.5 3.5L19 10" stroke="#F5A000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Гарантия<br>до 3 лет</span>
+        </div>
+        <div class="hero-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="10" width="20" height="12" rx="2" stroke="#F5A000" stroke-width="1.5"/>
+            <path d="M4 16h20M10 10V7a4 4 0 018 0v3" stroke="#F5A000" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <span>Бесплатная<br>доставка по РК</span>
+        </div>
+        <div class="hero-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="14" cy="14" r="10" stroke="#F5A000" stroke-width="1.5"/>
+            <text x="14" y="18" font-size="8" font-weight="700" fill="#F5A000" text-anchor="middle" font-family="Montserrat">24/7</text>
+          </svg>
+          <span>Поддержка<br>24/7</span>
+        </div>
+      </div>
+
+      <a href="#catalog" class="btn-primary">
+        Подобрать ПК
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <path d="M1 6h16M11 1l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="hero-image">
+      <!-- PC Tower SVG Illustration -->
+      <svg class="pc-tower" viewBox="0 0 300 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main case body -->
+        <rect x="60" y="30" width="180" height="310" rx="8" fill="#1A1A1A"/>
+        <rect x="60" y="30" width="180" height="310" rx="8" stroke="#333" stroke-width="1.5"/>
+        <!-- Glass panel left -->
+        <rect x="62" y="32" width="80" height="306" rx="6" fill="#111" opacity="0.9"/>
+        <!-- RGB strip top -->
+        <rect x="62" y="32" width="80" height="4" rx="2" fill="url(#rgbGrad)"/>
+        <!-- Fans visible through glass -->
+        <g opacity="0.85">
+          <!-- Fan 1 -->
+          <circle cx="102" cy="110" r="36" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+          <circle cx="102" cy="110" r="28" fill="#141414" stroke="#1A1A1A" stroke-width="1"/>
+          <circle cx="102" cy="110" r="6" fill="#0A0A0A" stroke="#F5A000" stroke-width="1.5"/>
+          <path d="M102 82 Q114 96 102 104 Q90 96 102 82Z" fill="#F5A000" opacity="0.7"/>
+          <path d="M130 110 Q116 122 108 110 Q116 98 130 110Z" fill="#9B6AF0" opacity="0.7"/>
+          <path d="M102 138 Q90 124 102 116 Q114 124 102 138Z" fill="#00C8FF" opacity="0.7"/>
+          <path d="M74 110 Q88 98 96 110 Q88 122 74 110Z" fill="#FF6B6B" opacity="0.7"/>
+          <!-- Fan 2 -->
+          <circle cx="102" cy="210" r="36" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+          <circle cx="102" cy="210" r="28" fill="#141414" stroke="#1A1A1A" stroke-width="1"/>
+          <circle cx="102" cy="210" r="6" fill="#0A0A0A" stroke="#F5A000" stroke-width="1.5"/>
+          <path d="M102 182 Q114 196 102 204 Q90 196 102 182Z" fill="#F5A000" opacity="0.7"/>
+          <path d="M130 210 Q116 222 108 210 Q116 198 130 210Z" fill="#9B6AF0" opacity="0.7"/>
+          <path d="M102 238 Q90 224 102 216 Q114 224 102 238Z" fill="#00C8FF" opacity="0.7"/>
+          <path d="M74 210 Q88 198 96 210 Q88 222 74 210Z" fill="#FF6B6B" opacity="0.7"/>
+        </g>
+        <!-- Right panel internals -->
+        <rect x="150" y="50" width="80" height="270" rx="4" fill="#111" opacity="0.5"/>
+        <!-- GPU -->
+        <rect x="160" y="200" width="65" height="100" rx="3" fill="#1E1E1E" stroke="#333" stroke-width="1"/>
+        <text x="192" y="258" font-size="8" fill="#F5A000" text-anchor="middle" font-family="Montserrat" font-weight="700">GeForce RTX</text>
+        <!-- GPU fan -->
+        <circle cx="180" cy="230" r="18" fill="#151515" stroke="#2A2A2A" stroke-width="1"/>
+        <circle cx="180" cy="230" r="10" fill="#0E0E0E"/>
+        <circle cx="180" cy="230" r="3" fill="#F5A000"/>
+        <circle cx="210" cy="230" r="18" fill="#151515" stroke="#2A2A2A" stroke-width="1"/>
+        <circle cx="210" cy="230" r="10" fill="#0E0E0E"/>
+        <circle cx="210" cy="230" r="3" fill="#F5A000"/>
+        <!-- RAM sticks -->
+        <rect x="160" y="70" width="12" height="80" rx="2" fill="#1C2E4A" stroke="#2A4870" stroke-width="1"/>
+        <rect x="176" y="70" width="12" height="80" rx="2" fill="#1C2E4A" stroke="#2A4870" stroke-width="1"/>
+        <!-- Motherboard lines -->
+        <line x1="160" y1="160" x2="220" y2="160" stroke="#222" stroke-width="0.5"/>
+        <line x1="160" y1="170" x2="220" y2="170" stroke="#222" stroke-width="0.5"/>
+        <line x1="160" y1="180" x2="220" y2="180" stroke="#222" stroke-width="0.5"/>
+        <!-- Power button -->
+        <circle cx="214" cy="55" r="8" fill="#0D0D0D" stroke="#F5A000" stroke-width="1.5"/>
+        <circle cx="214" cy="55" r="3" fill="#F5A000" opacity="0.8"/>
+        <!-- Top RGB -->
+        <rect x="62" y="32" width="176" height="6" rx="3" fill="url(#rgbTop)" opacity="0.9"/>
+        <!-- Bottom vents -->
+        <g stroke="#2A2A2A" stroke-width="1">
+          <line x1="70" y1="318" x2="230" y2="318"/>
+          <line x1="70" y1="322" x2="230" y2="322"/>
+          <line x1="70" y1="326" x2="230" y2="326"/>
+        </g>
+        <!-- USB ports -->
+        <rect x="165" y="45" width="14" height="6" rx="1" fill="#333"/>
+        <rect x="183" y="45" width="14" height="6" rx="1" fill="#333"/>
+        <!-- Glow effects -->
+        <ellipse cx="102" cy="110" rx="34" ry="34" fill="#F5A000" opacity="0.04"/>
+        <ellipse cx="102" cy="210" rx="34" ry="34" fill="#9B6AF0" opacity="0.04"/>
+
+        <defs>
+          <linearGradient id="rgbGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FF6B6B"/>
+            <stop offset="33%" stop-color="#F5A000"/>
+            <stop offset="66%" stop-color="#9B6AF0"/>
+            <stop offset="100%" stop-color="#00C8FF"/>
+          </linearGradient>
+          <linearGradient id="rgbTop" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#FF6B6B"/>
+            <stop offset="25%" stop-color="#F5A000"/>
+            <stop offset="50%" stop-color="#9B6AF0"/>
+            <stop offset="75%" stop-color="#00C8FF"/>
+            <stop offset="100%" stop-color="#FF6B6B"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES STRIP -->
+<div class="features-strip">
+  <div class="features-inner">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="8" width="24" height="18" rx="2" stroke="currentColor" stroke-width="1.8"/>
+          <rect x="8" y="12" width="16" height="10" rx="1" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="16" cy="17" r="3" fill="currentColor" opacity="0.3"/>
+        </svg>
+      </div>
+      <div class="feature-label">Топовые<br>комплектующие</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="10" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M16 10v7l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="feature-label">Сборка<br>от 1 дня</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4l10 4v8c0 6-10 12-10 12S6 22 6 16V8l10-4z" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M11 16l3.5 3.5L21 12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="feature-label">Тестирование<br>и контроль качества</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <rect x="4" y="8" width="24" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/>
+          <path d="M4 14h24" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M10 20h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="feature-label">Рассрочка<br>и Kaspi Red</div>
+    </div>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<section id="catalog" style="background: #F7F7F7;">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 class="section-title">Готовые решения</h2>
+      <a href="#" class="section-link">Смотреть все ПК →</a>
+    </div>
+
+    <div class="products-grid">
+      <!-- Card 1 -->
+      <div class="product-card">
+        <div class="product-name">VELTRIX START</div>
+        <div class="product-desc">для учебы и работы</div>
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="10" width="80" height="130" rx="5" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="1"/>
+            <rect x="32" y="12" width="35" height="126" rx="3" fill="#111"/>
+            <circle cx="50" cy="55" r="16" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+            <circle cx="50" cy="55" r="10" fill="#141414"/>
+            <circle cx="50" cy="55" r="3" fill="#F5A000"/>
+            <circle cx="50" cy="95" r="16" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+            <circle cx="50" cy="95" r="10" fill="#141414"/>
+            <circle cx="50" cy="95" r="3" fill="#F5A000"/>
+            <rect x="72" y="50" width="6" height="40" rx="1" fill="#1C2E4A"/>
+            <rect x="82" y="50" width="6" height="40" rx="1" fill="#1C2E4A"/>
+            <rect x="72" y="100" width="32" height="28" rx="2" fill="#1E1E1E" stroke="#333" stroke-width="0.5"/>
+            <circle cx="84" cy="112" r="7" fill="#151515"/>
+            <circle cx="84" cy="112" r="2" fill="#F5A000"/>
+            <circle cx="100" cy="112" r="7" fill="#151515"/>
+            <circle cx="100" cy="112" r="2" fill="#F5A000"/>
+            <rect x="32" y="12" width="78" height="3" rx="1" fill="url(#g1)"/>
+            <defs><linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F5A000"/><stop offset="100%" stop-color="#FF6B6B"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="product-price"><span>от</span> 299 000 ₸</div>
+        <a href="#" class="btn-outline">Подробнее</a>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="product-card">
+        <div class="product-name">VELTRIX GAME</div>
+        <div class="product-desc">для игр Full HD</div>
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="25" y="8" width="90" height="136" rx="5" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="1"/>
+            <rect x="27" y="10" width="38" height="132" rx="3" fill="#111"/>
+            <circle cx="46" cy="52" r="18" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+            <circle cx="46" cy="52" r="12" fill="#141414"/>
+            <circle cx="46" cy="52" r="4" fill="#9B6AF0"/>
+            <path d="M46 34 Q55 43 46 48 Q37 43 46 34Z" fill="#9B6AF0" opacity="0.6"/>
+            <path d="M64 52 Q55 61 49 52 Q55 43 64 52Z" fill="#F5A000" opacity="0.6"/>
+            <path d="M46 70 Q37 61 46 56 Q55 61 46 70Z" fill="#00C8FF" opacity="0.6"/>
+            <path d="M28 52 Q37 43 43 52 Q37 61 28 52Z" fill="#FF6B6B" opacity="0.6"/>
+            <circle cx="46" cy="105" r="18" fill="#0D0D0D" stroke="#222" stroke-width="1"/>
+            <circle cx="46" cy="105" r="12" fill="#141414"/>
+            <circle cx="46" cy="105" r="4" fill="#F5A000"/>
+            <path d="M46 87 Q55 96 46 101 Q37 96 46 87Z" fill="#F5A000" opacity="0.6"/>
+            <path d="M64 105 Q55 114 49 105 Q55 96 64 105Z" fill="#9B6AF0" opacity="0.6"/>
+            <path d="M46 123 Q37 114 46 109 Q55 114 46 123Z" fill="#00C8FF" opacity="0.6"/>
+            <path d="M28 105 Q37 96 43 105 Q37 114 28 105Z" fill="#FF6B6B" opacity="0.6"/>
+            <rect x="72" y="75" width="35" height="55" rx="2" fill="#1E1E1E" stroke="#333" stroke-width="0.5"/>
+            <circle cx="85" cy="95" r="9" fill="#151515"/>
+            <circle cx="85" cy="95" r="3" fill="#9B6AF0"/>
+            <circle cx="103" cy="95" r="9" fill="#151515"/>
+            <circle cx="103" cy="95" r="3" fill="#9B6AF0"/>
+            <rect x="27" y="10" width="88" height="3" rx="1" fill="url(#g2)"/>
+            <defs><linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#9B6AF0"/><stop offset="50%" stop-color="#F5A000"/><stop offset="100%" stop-color="#00C8FF"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="product-price"><span>от</span> 499 000 ₸</div>
+        <a href="#" class="btn-outline">Подробнее</a>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="product-card">
+        <div class="product-name">VELTRIX POWER</div>
+        <div class="product-desc">для игр 2K / 4K</div>
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="22" y="5" width="96" height="142" rx="6" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="1"/>
+            <rect x="24" y="7" width="40" height="138" rx="4" fill="#111"/>
+            <circle cx="44" cy="50" r="19" fill="#0D0D0D" stroke="#1E1E1E" stroke-width="1.5"/>
+            <circle cx="44" cy="50" r="13" fill="#141414"/>
+            <circle cx="44" cy="50" r="5" fill="#00C8FF"/>
+            <path d="M44 31 Q55 40 44 45 Q33 40 44 31Z" fill="#00C8FF" opacity="0.7"/>
+            <path d="M63 50 Q52 61 46 50 Q52 39 63 50Z" fill="#F5A000" opacity="0.7"/>
+            <path d="M44 69 Q33 58 44 53 Q55 58 44 69Z" fill="#9B6AF0" opacity="0.7"/>
+            <path d="M25 50 Q36 39 42 50 Q36 61 25 50Z" fill="#FF6B6B" opacity="0.7"/>
+            <circle cx="44" cy="108" r="19" fill="#0D0D0D" stroke="#1E1E1E" stroke-width="1.5"/>
+            <circle cx="44" cy="108" r="13" fill="#141414"/>
+            <circle cx="44" cy="108" r="5" fill="#F5A000"/>
+            <path d="M44 89 Q55 98 44 103 Q33 98 44 89Z" fill="#F5A000" opacity="0.7"/>
+            <path d="M63 108 Q52 119 46 108 Q52 97 63 108Z" fill="#00C8FF" opacity="0.7"/>
+            <path d="M44 127 Q33 116 44 111 Q55 116 44 127Z" fill="#9B6AF0" opacity="0.7"/>
+            <path d="M25 108 Q36 97 42 108 Q36 119 25 108Z" fill="#FF6B6B" opacity="0.7"/>
+            <rect x="70" y="65" width="40" height="65" rx="3" fill="#1E1E1E" stroke="#333" stroke-width="0.5"/>
+            <circle cx="85" cy="88" r="10" fill="#151515"/>
+            <circle cx="85" cy="88" r="3" fill="#00C8FF"/>
+            <circle cx="105" cy="88" r="10" fill="#151515"/>
+            <circle cx="105" cy="88" r="3" fill="#00C8FF"/>
+            <text x="88" y="118" font-size="6" fill="#F5A000" text-anchor="middle" font-family="Montserrat" font-weight="700">RTX 4070</text>
+            <rect x="24" y="7" width="94" height="4" rx="2" fill="url(#g3)"/>
+            <defs><linearGradient id="g3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00C8FF"/><stop offset="50%" stop-color="#F5A000"/><stop offset="100%" stop-color="#FF6B6B"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="product-price"><span>от</span> 799 000 ₸</div>
+        <a href="#" class="btn-outline">Подробнее</a>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="product-card">
+        <div class="product-name">VELTRIX PRO</div>
+        <div class="product-desc">для стриминга и работы</div>
+        <div class="product-img-wrap">
+          <svg viewBox="0 0 140 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="4" width="104" height="148" rx="7" fill="#1A1A1A" stroke="#F5A000" stroke-width="1.5" stroke-opacity="0.4"/>
+            <rect x="20" y="6" width="42" height="144" rx="5" fill="#111"/>
+            <circle cx="41" cy="48" r="20" fill="#0D0D0D" stroke="#F5A000" stroke-width="1" stroke-opacity="0.5"/>
+            <circle cx="41" cy="48" r="14" fill="#141414"/>
+            <circle cx="41" cy="48" r="5" fill="#F5A000"/>
+            <path d="M41 28 Q53 38 41 43 Q29 38 41 28Z" fill="#F5A000" opacity="0.8"/>
+            <path d="M61 48 Q49 60 42 48 Q49 36 61 48Z" fill="#FF6B6B" opacity="0.8"/>
+            <path d="M41 68 Q29 56 41 51 Q53 56 41 68Z" fill="#9B6AF0" opacity="0.8"/>
+            <path d="M21 48 Q33 36 39 48 Q33 60 21 48Z" fill="#00C8FF" opacity="0.8"/>
+            <circle cx="41" cy="108" r="20" fill="#0D0D0D" stroke="#F5A000" stroke-width="1" stroke-opacity="0.5"/>
+            <circle cx="41" cy="108" r="14" fill="#141414"/>
+            <circle cx="41" cy="108" r="5" fill="#9B6AF0"/>
+            <path d="M41 88 Q53 98 41 103 Q29 98 41 88Z" fill="#9B6AF0" opacity="0.8"/>
+            <path d="M61 108 Q49 120 42 108 Q49 96 61 108Z" fill="#F5A000" opacity="0.8"/>
+            <path d="M41 128 Q29 116 41 111 Q53 116 41 128Z" fill="#FF6B6B" opacity="0.8"/>
+            <path d="M21 108 Q33 96 39 108 Q33 120 21 108Z" fill="#00C8FF" opacity="0.8"/>
+            <rect x="68" y="55" width="46" height="75" rx="3" fill="#1E1E1E" stroke="#F5A000" stroke-width="0.8" stroke-opacity="0.3"/>
+            <circle cx="85" cy="80" r="11" fill="#151515"/>
+            <circle cx="85" cy="80" r="4" fill="#F5A000"/>
+            <circle cx="108" cy="80" r="11" fill="#151515"/>
+            <circle cx="108" cy="80" r="4" fill="#F5A000"/>
+            <text x="88" y="114" font-size="6" fill="#F5A000" text-anchor="middle" font-family="Montserrat" font-weight="700">RTX 4090</text>
+            <rect x="76" y="20" width="8" height="30" rx="1" fill="#1C2E4A" stroke="#2A4870" stroke-width="0.5"/>
+            <rect x="88" y="20" width="8" height="30" rx="1" fill="#1C2E4A" stroke="#2A4870" stroke-width="0.5"/>
+            <rect x="20" y="6" width="102" height="5" rx="2" fill="url(#g4)"/>
+            <rect x="18" y="4" width="104" height="148" rx="7" stroke="url(#g4)" stroke-width="0.5"/>
+            <defs><linearGradient id="g4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#F5A000"/><stop offset="33%" stop-color="#FF6B6B"/><stop offset="66%" stop-color="#9B6AF0"/><stop offset="100%" stop-color="#F5A000"/></linearGradient></defs>
+          </svg>
+        </div>
+        <div class="product-price"><span>от</span> 1 099 000 ₸</div>
+        <a href="#" class="btn-outline">Подробнее</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner" id="custom">
+  <div class="cta-inner">
+    <div class="cta-content">
+      <div class="cta-title">Сборка ПК на заказ</div>
+      <div class="cta-sub">Соберём ПК под ваши задачи и бюджет</div>
+      <a href="#contacts" class="btn-primary" style="background: var(--gold); color: var(--dark);">
+        Рассчитать сборку
+        <svg width="18" height="12" viewBox="0 0 18 12" fill="none">
+          <path d="M1 6h16M11 1l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="cta-image">
+      <div class="cta-image-inner"></div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="section-inner">
+    <h2 class="why-title">Почему выбирают <span class="accent">VELTRIX</span>?</h2>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M8 28V12l6-6h14v22H8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M14 6v6H8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M13 18h10M13 22h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="26" cy="26" r="6" fill="#F5A000"/>
+            <path d="M23 26l2 2 3-3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="why-label">Опытные<br>сборщики</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="16" r="10" stroke="currentColor" stroke-width="1.6"/>
+            <rect x="14" y="12" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M12 28h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <circle cx="18" cy="16" r="2" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="why-label">Только новые<br>комплектующие</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M8 10h20v16H8z" stroke="currentColor" stroke-width="1.6" rx="2"/>
+            <path d="M14 18h8M18 14v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="why-label">Честные<br>цены</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <path d="M18 6l10 4v8c0 7-10 12-10 12S8 25 8 18v-8l10-4z" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M13 18l3.5 3.5L23 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="why-label">Гарантия<br>до 3 лет</div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <circle cx="18" cy="18" r="12" stroke="currentColor" stroke-width="1.6"/>
+            <text x="18" y="22" font-size="9" font-weight="700" fill="currentColor" text-anchor="middle" font-family="Montserrat">24/7</text>
+          </svg>
+        </div>
+        <div class="why-label">Поддержка<br>после покупки</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<div class="calc-section" id="configurator">
+  <div class="calc-inner">
+
+    <!-- Header -->
+    <div class="calc-header">
+      <div class="calc-eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        Конфигуратор
+      </div>
+      <h2 class="calc-title">Собери свой <span class="accent">ПК</span></h2>
+      <p class="calc-subtitle">Ответьте на несколько вопросов — мы подберём оптимальную сборку</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="calc-progress" id="calcProgress">
+      <div class="calc-progress-track"><div class="calc-progress-fill" id="progressFill"></div></div>
+    </div>
+
+    <!-- STEP 1: Purpose -->
+    <div class="calc-step active" data-step="1">
+      <div class="calc-step-label">Шаг 1 из 10</div>
+      <div class="calc-step-question">Для чего нужен ПК?</div>
+      <div class="calc-options" data-key="purpose" data-multi="true">
+        <div class="calc-option" data-val="Игры"><span class="opt-icon"></span>🎮 Игры</div>
+        <div class="calc-option" data-val="Стриминг"><span class="opt-icon"></span>📡 Стриминг</div>
+        <div class="calc-option" data-val="Монтаж видео"><span class="opt-icon"></span>🎬 Монтаж видео</div>
+        <div class="calc-option" data-val="Работа / офис"><span class="opt-icon"></span>💼 Работа / офис</div>
+        <div class="calc-option" data-val="Программирование"><span class="opt-icon"></span>💻 Программирование</div>
+        <div class="calc-option" data-val="3D / дизайн"><span class="opt-icon"></span>🎨 3D / дизайн</div>
+        <div class="calc-option" data-val="Универсальный"><span class="opt-icon"></span>⚡ Универсальный вариант</div>
+      </div>
+      <div class="calc-nav">
+        <span class="calc-step-counter">1 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 2: Budget -->
+    <div class="calc-step" data-step="2">
+      <div class="calc-step-label">Шаг 2 из 10</div>
+      <div class="calc-step-question">Какой бюджет?</div>
+      <div class="calc-options" data-key="budget" data-multi="false">
+        <div class="calc-option" data-val="До 300 000 ₸"><span class="opt-icon"></span>До 300 000 ₸</div>
+        <div class="calc-option" data-val="300 000 – 500 000 ₸"><span class="opt-icon"></span>300 000 – 500 000 ₸</div>
+        <div class="calc-option" data-val="500 000 – 800 000 ₸"><span class="opt-icon"></span>500 000 – 800 000 ₸</div>
+        <div class="calc-option" data-val="800 000 ₸+"><span class="opt-icon"></span>800 000 ₸+</div>
+        <div class="calc-option" data-val="Без ограничений"><span class="opt-icon"></span>💎 Без ограничений</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">2 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 3: GPU -->
+    <div class="calc-step" data-step="3">
+      <div class="calc-step-label">Шаг 3 из 10</div>
+      <div class="calc-step-question">Какую видеокарту хотите?</div>
+      <div class="calc-group-label">NVIDIA</div>
+      <div class="calc-options" data-key="gpu" data-multi="false">
+        <div class="calc-option" data-val="RTX 4060"><span class="opt-icon"></span>RTX 4060</div>
+        <div class="calc-option" data-val="RTX 4060 Ti"><span class="opt-icon"></span>RTX 4060 Ti</div>
+        <div class="calc-option" data-val="RTX 4070"><span class="opt-icon"></span>RTX 4070</div>
+        <div class="calc-option" data-val="RTX 4070 Super"><span class="opt-icon"></span>RTX 4070 Super</div>
+        <div class="calc-option" data-val="RTX 4080"><span class="opt-icon"></span>RTX 4080</div>
+        <div class="calc-option" data-val="RTX 4090"><span class="opt-icon"></span>RTX 4090</div>
+      </div>
+      <div class="calc-group-label">AMD</div>
+      <div class="calc-options" data-key="gpu" data-multi="false">
+        <div class="calc-option" data-val="RX 7600"><span class="opt-icon"></span>RX 7600</div>
+        <div class="calc-option" data-val="RX 7700 XT"><span class="opt-icon"></span>RX 7700 XT</div>
+        <div class="calc-option" data-val="RX 7800 XT"><span class="opt-icon"></span>RX 7800 XT</div>
+        <div class="calc-option" data-val="RX 7900 XT"><span class="opt-icon"></span>RX 7900 XT</div>
+      </div>
+      <div class="calc-group-label">Другое</div>
+      <div class="calc-options" data-key="gpu" data-multi="false">
+        <div class="calc-option" data-val="Нужна консультация по GPU"><span class="opt-icon"></span>🤔 Не знаю / нужна консультация</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">3 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 4: CPU -->
+    <div class="calc-step" data-step="4">
+      <div class="calc-step-label">Шаг 4 из 10</div>
+      <div class="calc-step-question">Какой процессор хотите?</div>
+      <div class="calc-group-label">Intel</div>
+      <div class="calc-options" data-key="cpu" data-multi="false">
+        <div class="calc-option" data-val="Intel Core i5"><span class="opt-icon"></span>Intel Core i5</div>
+        <div class="calc-option" data-val="Intel Core i7"><span class="opt-icon"></span>Intel Core i7</div>
+        <div class="calc-option" data-val="Intel Core i9"><span class="opt-icon"></span>Intel Core i9</div>
+      </div>
+      <div class="calc-group-label">AMD</div>
+      <div class="calc-options" data-key="cpu" data-multi="false">
+        <div class="calc-option" data-val="Ryzen 5"><span class="opt-icon"></span>Ryzen 5</div>
+        <div class="calc-option" data-val="Ryzen 7"><span class="opt-icon"></span>Ryzen 7</div>
+        <div class="calc-option" data-val="Ryzen 9"><span class="opt-icon"></span>Ryzen 9</div>
+      </div>
+      <div class="calc-group-label">Другое</div>
+      <div class="calc-options" data-key="cpu" data-multi="false">
+        <div class="calc-option" data-val="Нужна консультация по CPU"><span class="opt-icon"></span>🤔 Не знаю / нужна консультация</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">4 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 5: RAM -->
+    <div class="calc-step" data-step="5">
+      <div class="calc-step-label">Шаг 5 из 10</div>
+      <div class="calc-step-question">Какой объём оперативной памяти?</div>
+      <div class="calc-options" data-key="ram" data-multi="false">
+        <div class="calc-option" data-val="16 GB"><span class="opt-icon"></span>16 GB</div>
+        <div class="calc-option" data-val="32 GB"><span class="opt-icon"></span>32 GB</div>
+        <div class="calc-option" data-val="64 GB"><span class="opt-icon"></span>64 GB</div>
+        <div class="calc-option" data-val="128 GB"><span class="opt-icon"></span>128 GB</div>
+        <div class="calc-option" data-val="RAM: не знаю"><span class="opt-icon"></span>🤔 Не знаю</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">5 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 6: SSD -->
+    <div class="calc-step" data-step="6">
+      <div class="calc-step-label">Шаг 6 из 10</div>
+      <div class="calc-step-question">Какой объём SSD нужен?</div>
+      <div class="calc-options" data-key="ssd" data-multi="false">
+        <div class="calc-option" data-val="512 GB"><span class="opt-icon"></span>512 GB</div>
+        <div class="calc-option" data-val="1 TB"><span class="opt-icon"></span>1 TB</div>
+        <div class="calc-option" data-val="2 TB"><span class="opt-icon"></span>2 TB</div>
+        <div class="calc-option" data-val="4 TB"><span class="opt-icon"></span>4 TB</div>
+        <div class="calc-option" data-val="SSD: не знаю"><span class="opt-icon"></span>🤔 Не знаю</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">6 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 7: HDD -->
+    <div class="calc-step" data-step="7">
+      <div class="calc-step-label">Шаг 7 из 10</div>
+      <div class="calc-step-question">Нужен ли HDD для хранения файлов?</div>
+      <div class="calc-options" data-key="hdd_need" data-multi="false">
+        <div class="calc-option" data-val="Да"><span class="opt-icon"></span>✅ Да</div>
+        <div class="calc-option" data-val="Нет"><span class="opt-icon"></span>❌ Нет</div>
+      </div>
+      <div class="hdd-sub" id="hddSub">
+        <div class="calc-group-label">Выберите объём HDD</div>
+        <div class="calc-options" data-key="hdd_size" data-multi="false">
+          <div class="calc-option" data-val="HDD 1 TB"><span class="opt-icon"></span>1 TB</div>
+          <div class="calc-option" data-val="HDD 2 TB"><span class="opt-icon"></span>2 TB</div>
+          <div class="calc-option" data-val="HDD 4 TB+"><span class="opt-icon"></span>4 TB+</div>
+        </div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">7 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 8: Case -->
+    <div class="calc-step" data-step="8">
+      <div class="calc-step-label">Шаг 8 из 10</div>
+      <div class="calc-step-question">Какой корпус хотите?</div>
+      <div class="calc-options" data-key="case" data-multi="true">
+        <div class="calc-option" data-val="Белый"><span class="opt-icon"></span>⬜ Белый</div>
+        <div class="calc-option" data-val="Чёрный"><span class="opt-icon"></span>⬛ Чёрный</div>
+        <div class="calc-option" data-val="Минималистичный"><span class="opt-icon"></span>🔲 Минималистичный</div>
+        <div class="calc-option" data-val="Gaming стиль"><span class="opt-icon"></span>🎮 Gaming стиль</div>
+        <div class="calc-option" data-val="С RGB подсветкой"><span class="opt-icon"></span>✨ С RGB подсветкой</div>
+        <div class="calc-option" data-val="Без подсветки"><span class="opt-icon"></span>🔇 Без подсветки</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">8 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 9: RGB -->
+    <div class="calc-step" data-step="9">
+      <div class="calc-step-label">Шаг 9 из 10</div>
+      <div class="calc-step-question">Нужна ли RGB подсветка?</div>
+      <div class="calc-options" data-key="rgb" data-multi="false">
+        <div class="calc-option" data-val="Да, RGB"><span class="opt-icon"></span>🌈 Да</div>
+        <div class="calc-option" data-val="Нет RGB"><span class="opt-icon"></span>🔕 Нет</div>
+        <div class="calc-option" data-val="Немного RGB"><span class="opt-icon"></span>💡 Немного</div>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">9 / 10</span>
+        <button class="btn-calc-next" onclick="nextStep()">Далее <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- STEP 10: Notes -->
+    <div class="calc-step" data-step="10">
+      <div class="calc-step-label">Шаг 10 из 10</div>
+      <div class="calc-step-question">Дополнительные пожелания</div>
+      <textarea class="calc-textarea" id="calcNotes" placeholder="Напишите любые пожелания к сборке..."></textarea>
+      <div class="calc-textarea-hints">
+        <button class="hint-tag" onclick="addHint('Тихий ПК')">Тихий ПК</button>
+        <button class="hint-tag" onclick="addHint('Максимальный FPS')">Максимальный FPS</button>
+        <button class="hint-tag" onclick="addHint('Белая сборка')">Белая сборка</button>
+        <button class="hint-tag" onclick="addHint('Для GTA 6')">Для GTA 6</button>
+        <button class="hint-tag" onclick="addHint('Для стримов и монтажа')">Для стримов и монтажа</button>
+        <button class="hint-tag" onclick="addHint('Красивый RGB дизайн')">Красивый RGB дизайн</button>
+      </div>
+      <div class="calc-nav">
+        <button class="btn-calc-back" onclick="prevStep()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Назад</button>
+        <span class="calc-step-counter">10 / 10</span>
+        <button class="btn-calc-next" onclick="showContact()" style="background: var(--gold);">Узнать цену <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M1 5h14M9 1l6 4-6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+
+    <!-- CONTACT STEP -->
+    <div class="calc-contact-step" id="calcContact">
+      <div class="calc-summary" id="calcSummaryBox">
+        <div class="calc-summary-title">📋 Ваша конфигурация</div>
+        <div class="calc-summary-grid" id="calcSummaryGrid"></div>
+      </div>
+      <div class="calc-form-title">Для точного расчёта стоимости</div>
+      <div class="calc-form-sub">Укажите ваши данные — менеджер перезвонит в течение 30 минут</div>
+      <div class="calc-input-group">
+        <input class="calc-input" id="contactName" type="text" placeholder="Ваше имя *" />
+        <input class="calc-input" id="contactPhone" type="tel" placeholder="+7 (___) ___-__-__ *" />
+      </div>
+      <button class="calc-submit" onclick="submitForm()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Отправить заявку
+      </button>
+      <div class="calc-privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</div>
+      <div class="calc-nav" style="margin-top: 20px;">
+        <button class="btn-calc-back" onclick="backToSteps()"><svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg> Изменить</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="calc-success" id="calcSuccess">
+      <div class="success-icon">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M6 16l7 7 13-13" stroke="#F5A000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="calc-success-title">Заявка принята!</div>
+      <div class="calc-success-sub">Спасибо! Наш менеджер свяжется с вами в течение 30 минут и рассчитает точную стоимость сборки.</div>
+      <a href="tel:+77005558088" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Позвонить нам
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer id="contacts">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Col 1: Logo -->
+      <div class="footer-col">
+        <a href="#" class="footer-logo">VELTRIX</a>
+        <p class="footer-tagline">Сборка компьютеров<br>на заказ в Алматы</p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="Telegram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="WhatsApp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Menu -->
+      <div class="footer-col">
+        <div class="footer-col-title">Меню</div>
+        <ul>
+          <li><a href="#catalog">Каталог ПК</a></li>
+          <li><a href="#custom">Сборка на заказ</a></li>
+          <li><a href="#delivery">Доставка и оплата</a></li>
+          <li><a href="#warranty">Гарантия</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Contacts -->
+      <div class="footer-col">
+        <div class="footer-col-title">Контакты</div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          <div class="footer-contact-text"><a href="tel:+77005558088">+7 700 555 80 88</a></div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div class="footer-contact-text">г. Алматы,<br>Аксай-4, 44а</div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="footer-contact-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </span>
+          <div class="footer-contact-text">Ежедневно с 10:00 до 20:00</div>
+        </div>
+      </div>
+
+      <!-- Col 4: Socials -->
+      <div class="footer-col">
+        <div class="footer-col-title">Мы в соцсетях</div>
+        <div style="display:flex; gap: 12px; margin-top: 4px;">
+          <a href="#" class="social-icon" title="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="Telegram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#" class="social-icon" title="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © VELTRIX 2024. Все права защищены.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Smooth active nav highlight on scroll
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.id;
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  });
+
+  // Card hover ripple
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'all 0.25s cubic-bezier(.25,.8,.25,1)';
+    });
+  });
+
+  // Fan spin animation
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes spin { from { transform-origin: center; transform: rotate(0deg); } to { transform-origin: center; transform: rotate(360deg); } }
+    .hero-image svg circle[r="3"] { animation: spin 1.5s linear infinite; }
+  `;
+  document.head.appendChild(style);
+
+  /* ═══════════════════════════
+     CALCULATOR LOGIC
+  ═══════════════════════════ */
+  const TOTAL_STEPS = 10;
+  let currentStep = 1;
+  const answers = {};
+
+  // Build progress dots
+  const progress = document.getElementById('calcProgress');
+  const track = progress.querySelector('.calc-progress-track');
+  // Insert dots
+  for (let i = 1; i <= TOTAL_STEPS; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'calc-step-dot' + (i === 1 ? ' active' : '');
+    dot.textContent = i;
+    dot.id = 'dot' + i;
+    progress.insertBefore(dot, track);
+    if (i < TOTAL_STEPS) {
+      const sp = document.createElement('div');
+      sp.className = 'calc-step-spacer';
+      progress.insertBefore(sp, track);
+    }
+  }
+
+  function updateProgress() {
+    for (let i = 1; i <= TOTAL_STEPS; i++) {
+      const dot = document.getElementById('dot' + i);
+      dot.className = 'calc-step-dot';
+      if (i < currentStep) dot.classList.add('done');
+      else if (i === currentStep) dot.classList.add('active');
+    }
+    const fill = document.getElementById('progressFill');
+    fill.style.width = ((currentStep - 1) / (TOTAL_STEPS - 1) * 100) + '%';
+  }
+
+  // Option click handler
+  document.querySelectorAll('.calc-options').forEach(group => {
+    const key = group.dataset.key;
+    const multi = group.dataset.multi === 'true';
+    group.querySelectorAll('.calc-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const val = opt.dataset.val;
+        if (multi) {
+          opt.classList.toggle('selected');
+          if (!answers[key]) answers[key] = [];
+          const idx = answers[key].indexOf(val);
+          if (idx === -1) answers[key].push(val);
+          else answers[key].splice(idx, 1);
+        } else {
+          // Deselect siblings in all groups with same key
+          document.querySelectorAll(`.calc-options[data-key="${key}"] .calc-option`).forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          answers[key] = val;
+          // HDD sub-options
+          if (key === 'hdd_need') {
+            document.getElementById('hddSub').classList.toggle('visible', val === 'Да');
+          }
+        }
+      });
+    });
+  });
+
+  function nextStep() {
+    if (currentStep < TOTAL_STEPS) {
+      document.querySelector(`.calc-step[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep++;
+      document.querySelector(`.calc-step[data-step="${currentStep}"]`).classList.add('active');
+      updateProgress();
+      document.getElementById('configurator').scrollIntoView({behavior: 'smooth', block: 'start'});
+    }
+  }
+
+  function prevStep() {
+    if (currentStep > 1) {
+      document.querySelector(`.calc-step[data-step="${currentStep}"]`).classList.remove('active');
+      currentStep--;
+      document.querySelector(`.calc-step[data-step="${currentStep}"]`).classList.add('active');
+      updateProgress();
+    }
+  }
+
+  function showContact() {
+    answers.notes = document.getElementById('calcNotes').value;
+    // Hide all steps
+    document.querySelectorAll('.calc-step').forEach(s => s.classList.remove('active'));
+    document.getElementById('calcProgress').style.opacity = '0.3';
+    // Build summary
+    const grid = document.getElementById('calcSummaryGrid');
+    const labels = {
+      purpose: 'Назначение', budget: 'Бюджет', gpu: 'Видеокарта', cpu: 'Процессор',
+      ram: 'ОЗУ', ssd: 'SSD', hdd_need: 'HDD', hdd_size: 'Объём HDD',
+      case: 'Корпус', rgb: 'RGB', notes: 'Пожелания'
+    };
+    grid.innerHTML = '';
+    Object.entries(answers).forEach(([k, v]) => {
+      if (!v || (Array.isArray(v) && !v.length) || v === '') return;
+      const item = document.createElement('div');
+      item.className = 'calc-summary-item';
+      const display = Array.isArray(v) ? v.join(', ') : v;
+      item.innerHTML = `${labels[k] || k}: <strong>${display}</strong>`;
+      grid.appendChild(item);
+    });
+    document.getElementById('calcContact').classList.add('active');
+    document.getElementById('configurator').scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  function backToSteps() {
+    document.getElementById('calcContact').classList.remove('active');
+    document.getElementById('calcProgress').style.opacity = '1';
+    document.querySelector(`.calc-step[data-step="${currentStep}"]`).classList.add('active');
+  }
+
+  function addHint(text) {
+    const ta = document.getElementById('calcNotes');
+    ta.value = ta.value ? ta.value + ', ' + text : text;
+    ta.focus();
+  }
+
+  function submitForm() {
+    const name = document.getElementById('contactName').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    if (!name) { document.getElementById('contactName').style.borderColor = '#F5A000'; document.getElementById('contactName').focus(); return; }
+    if (!phone) { document.getElementById('contactPhone').style.borderColor = '#F5A000'; document.getElementById('contactPhone').focus(); return; }
+    // Success
+    document.getElementById('calcContact').classList.remove('active');
+    document.getElementById('calcSuccess').classList.add('active');
+    document.getElementById('calcProgress').style.display = 'none';
+    document.getElementById('configurator').scrollIntoView({behavior: 'smooth', block: 'start'});
+  }
+
+  /* ── Burger menu ── */
+  function toggleMenu() {
+    const btn = document.getElementById('burgerBtn');
+    const nav = document.getElementById('mobileNav');
+    btn.classList.toggle('open');
+    nav.classList.toggle('open');
+    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+  }
+
+  function closeMenu() {
+    document.getElementById('burgerBtn').classList.remove('open');
+    document.getElementById('mobileNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Hide burger on desktop resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 640) closeMenu();
+  });
+</script>
+</body>
+</html>
