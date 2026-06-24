@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELTRIX GAME — Игровые ПК | Алматы</title>
+<link rel="icon" type="image/x-icon" href="./img/ICON.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #F5A000;
+    --gold-light: #FFB81C;
+    --dark: #111111;
+    --text: #222222;
+    --text-muted: #666666;
+    --border: #E5E5E5;
+    --white: #FFFFFF;
+    --bg: #F7F7F7;
+    --card-bg: #FFFFFF;
+  }
+
+  html[data-theme="dark"] {
+    --dark: #FFFFFF;
+    --text: #E8E8E8;
+    --text-muted: #888888;
+    --border: #2A2A2A;
+    --white: #141414;
+    --bg: #1A1A1A;
+    --card-bg: #1E1E1E;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    transition: background 0.3s, border-color 0.3s;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    height: 64px;
+  }
+
+  .logo {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .back-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .back-link:hover { color: var(--gold); }
+  .back-link span { white-space: nowrap; }
+
+  .header-contacts {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .header-contacts .phone {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    text-decoration: none;
+    display: block;
+  }
+  .header-contacts .address {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+
+  .theme-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border);
+    background: var(--white);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .theme-btn:hover { border-color: var(--gold); color: var(--gold); }
+  html[data-theme="dark"] .icon-sun { display: none; }
+  html:not([data-theme="dark"]) .icon-moon { display: none; }
+
+  /* ─── PAGE HERO ─── */
+  .page-hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 40px;
+    transition: background 0.3s;
+  }
+
+  .page-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(245,160,0,0.1);
+    border: 1px solid rgba(245,160,0,0.3);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+
+  .page-title {
+    font-size: 44px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .page-title .accent { color: var(--gold); }
+
+  .page-desc {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 10px;
+    max-width: 560px;
+    line-height: 1.5;
+  }
+
+  .page-meta {
+    display: flex;
+    gap: 32px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+  }
+  .meta-item svg { color: var(--gold); flex-shrink: 0; }
+
+  /* ─── FILTER BAR ─── */
+  .filter-bar {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    transition: background 0.3s;
+  }
+  .filter-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-inner::-webkit-scrollbar { display: none; }
+
+  .filter-tab {
+    padding: 16px 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color .2s, border-color .2s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+  }
+  .filter-tab:hover { color: var(--dark); }
+  .filter-tab.active { color: var(--dark); border-bottom-color: var(--gold); }
+
+  /* ─── CATALOG GRID ─── */
+  .catalog-section {
+    padding: 48px 40px;
+  }
+
+  .catalog-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .catalog-count {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+
+  /* ─── PRODUCT CARD ─── */
+  .pc-card {
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    transition: border-color .2s, box-shadow .2s, transform .2s, background 0.3s;
+    min-width: 0;
+  }
+
+  .pc-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px rgba(245,160,0,0.12);
+    transform: translateY(-4px);
+  }
+
+  .pc-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--gold);
+    color: var(--dark);
+    margin: 16px 16px 0;
+    align-self: flex-start;
+  }
+  .pc-badge.badge-new { background: #2ECC71; color: #fff; }
+  .pc-badge.badge-hit { background: #E74C3C; color: #fff; }
+  .pc-badge.badge-top { background: #8B5CF6; color: #fff; }
+
+  .pc-img-wrap {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+    background: var(--bg);
+    margin: 12px 16px 0;
+  }
+
+  .pc-img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .pc-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    color: var(--border);
+  }
+  .pc-img-placeholder span {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    opacity: 0.5;
+  }
+
+  .pc-content {
+    padding: 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pc-name {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .pc-specs {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+  }
+
+  .spec-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+  }
+
+  .spec-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    color: var(--gold);
+    margin-top: 1px;
+  }
+
+  .spec-label {
+    color: var(--text-muted);
+    font-weight: 500;
+    flex-shrink: 0;
+    min-width: 32px;
+  }
+
+  .spec-val {
+    color: var(--dark);
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .pc-footer {
+    padding: 0 16px 16px;
+  }
+
+  .pc-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin-bottom: 14px;
+  }
+
+  .btn-buy {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-buy:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ─── CTA BOTTOM ─── */
+  .cta-bottom {
+    background: var(--dark);
+    padding: 48px 40px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .cta-bottom-inner { max-width: 560px; margin: 0 auto; }
+  .cta-bottom-title {
+    font-size: 26px;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: var(--gold);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .cta-bottom-sub {
+    font-size: 14px;
+    color: #888;
+    font-weight: 500;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .btn-wa {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px 32px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .btn-wa:hover { background: #1ebe5c; transform: translateY(-1px); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    padding: 28px 40px;
+    transition: background 0.3s;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .footer-copy {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-links a {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ─── FLOAT WA ─── */
+  .float-wa {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    z-index: 999;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .float-wa:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+
+  .pc-card.hidden { display: none; }
+
+  /* ─── RESPONSIVE ─── */
+
+  /* Tablets / small laptops */
+  @media (max-width: 1100px) {
+    .catalog-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Tablets portrait */
+  @media (max-width: 900px) {
+    header { padding: 0 24px; }
+    .header-inner { gap: 16px; }
+    .page-hero { padding: 40px 24px; }
+    .filter-bar { padding: 0 24px; }
+    .catalog-section { padding: 40px 24px; }
+    .cta-bottom { padding: 40px 24px; }
+    footer { padding: 24px 24px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    header { padding: 0 16px; }
+    .header-inner {
+      height: auto;
+      min-height: 60px;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .logo { font-size: 19px; order: 1; }
+    .theme-btn { order: 2; margin-left: auto; width: 32px; height: 32px; }
+    .back-link {
+      order: 3;
+      font-size: 12px;
+      width: auto;
+    }
+    .back-link span { display: none; }
+    .header-contacts {
+      order: 4;
+      margin-left: auto;
+      text-align: right;
+    }
+    .header-contacts .phone { font-size: 13px; }
+    .header-contacts .address { display: none; }
+
+    .page-hero { padding: 28px 16px; }
+    .category-badge { font-size: 10px; padding: 5px 12px; margin-bottom: 12px; }
+    .page-title { font-size: 28px; letter-spacing: -0.5px; }
+    .page-desc { font-size: 13.5px; max-width: 100%; }
+    .page-meta {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .meta-item { font-size: 11.5px; }
+
+    .filter-bar { padding: 0 16px; }
+    .filter-tab { padding: 13px 14px; font-size: 11.5px; }
+
+    .catalog-section { padding: 28px 16px; }
+    .catalog-count { margin-bottom: 16px; font-size: 11px; }
+    .catalog-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+    .pc-badge { font-size: 9px; padding: 3px 8px; margin: 12px 12px 0; }
+    .pc-img-wrap { height: 130px; margin: 10px 12px 0; padding: 10px; }
+    .pc-img-placeholder svg { width: 44px; height: 44px; }
+    .pc-img-placeholder span { font-size: 9.5px; }
+
+    .pc-content { padding: 12px; }
+    .pc-name { font-size: 11.5px; }
+    .pc-specs { margin-top: 9px; gap: 6px; }
+    .spec-row {
+      font-size: 10px;
+      flex-wrap: wrap;
+    }
+    .spec-icon { width: 12px; height: 12px; }
+    .spec-label { min-width: 28px; }
+
+    .pc-footer { padding: 0 12px 12px; }
+    .pc-divider { margin-bottom: 10px; }
+    .btn-buy { font-size: 10.5px; padding: 11px 6px; letter-spacing: 0.5px; }
+
+    .cta-bottom { padding: 32px 16px; }
+    .cta-bottom-title { font-size: 21px; }
+    .cta-bottom-sub { font-size: 13px; margin-bottom: 20px; }
+    .btn-wa { font-size: 12px; padding: 13px 22px; width: 100%; justify-content: center; }
+
+    footer { padding: 20px 16px; }
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .footer-copy { font-size: 10px; }
+    .footer-links { flex-wrap: wrap; gap: 14px; }
+    .footer-links a { font-size: 11.5px; }
+
+    .float-wa { width: 48px; height: 48px; bottom: 18px; right: 18px; }
+    .float-wa svg { width: 24px; height: 24px; }
+  }
+
+  /* Small phones */
+  @media (max-width: 480px) {
+    .page-title { font-size: 23px; }
+    .catalog-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .pc-img-wrap { height: 105px; margin: 8px 10px 0; }
+    .pc-img-placeholder svg { width: 36px; height: 36px; }
+    .pc-content { padding: 10px; }
+    .pc-footer { padding: 0 10px 10px; }
+    .spec-row { font-size: 9px; }
+    .spec-label { min-width: 24px; }
+    .btn-buy { font-size: 9.5px; padding: 10px 4px; }
+    .header-contacts .phone { font-size: 12px; }
+  }
+
+  /* Very small phones */
+  @media (max-width: 360px) {
+    .catalog-grid { grid-template-columns: 1fr 1fr; gap: 6px; }
+    .pc-img-wrap { height: 90px; }
+    .spec-row { font-size: 8.5px; }
+    .btn-buy { font-size: 9px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="./index.html" class="logo">VELTRIX</a>
+    <a href="./index.html#catalog" class="back-link">
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none"><path d="M15 5H1M7 1L1 5l6 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Назад к каталогу</span>
+    </a>
+    <div class="header-contacts">
+      <a href="https://wa.me/77066607469" target="_blank" class="phone">+7 706 660 74 69</a>
+      <div class="address">г. Алматы, мкр. Аксай-4, 44а</div>
+    </div>
+    <button class="theme-btn" onclick="toggleTheme()">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="category-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
+      Категория
+    </div>
+    <h1 class="page-title">VELTRIX <span class="accent">GAME</span></h1>
+    <p class="page-desc">Игровые ПК на базе видеокарт RTX серии. От бюджетных сборок до топовых конфигураций — для любого уровня игр.</p>
+    <div class="page-meta">
+      <div class="meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Гарантия 12 месяцев
+      </div>
+      <div class="meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        Сборка от 1 дня
+      </div>
+      <div class="meta-item">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8zM5 19a2 2 0 104 0 2 2 0 00-4 0zM18 19a2 2 0 104 0 2 2 0 00-4 0z"/></svg>
+        Бесплатная доставка по РК
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-tab active" data-filter="all">Все модели (18)</button>
+    <button class="filter-tab" data-filter="rtx30">RTX 30 серия</button>
+    <button class="filter-tab" data-filter="rtx40">RTX 40 серия</button>
+    <button class="filter-tab" data-filter="rtx50">RTX 50 серия</button>
+  </div>
+</div>
+
+<!-- CATALOG -->
+<div class="catalog-section">
+  <div class="catalog-inner">
+    <div class="catalog-count" id="catalogCount">18 моделей в наличии</div>
+
+    <div class="catalog-grid" id="catalogGrid">
+
+      <!-- CARD 1 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-10400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060 12 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">512 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-10400f-rtx-3060-12-gb-16-gb-ssd-512-gb-win-11-pro-chernyi-139896008/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i7-8700</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3070</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i7-8700-rtx-3070-16-gb-ssd-1000-gb-win-11-pro-chernyi-151802883/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-10400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3070 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">480 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-434343-chernyi-156697569/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-10400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 2060 Super 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 10</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-10400f-rtx-2060-super-8-gb-16-gb-ssd-1000-gb-win-10-chernyi-139829216/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i7-10700F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">HDD</span>
+              <span class="spec-val">2000 ГБ + SSD 240 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 10</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i7-10700f-rtx-3060-16gb-240-2000gb-hdd-ssd-win-10-chernyi-139829224/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-12400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060 Ti 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">HDD</span>
+              <span class="spec-val">2000 ГБ + SSD 512 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 10</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-12400f-rtx-3060-ti-8-gb-16-gb-2000-gb-hdd-ssd-480-gb-win-10-chernyi-139829227/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 7 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-badge badge-hit">Хит</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">AMD Ryzen 5 3600</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060 12 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-ryzen-5-3600-rtx-3060-12-gb-32-gb-ssd-1000-gb-win-11-pro-chernyi-139896018/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 8 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-12400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060 Ti 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-12400f-rtx-3060-ti-8-gb-16-gb-ssd-1000-gb-win-11-pro-chernyi-139829210/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 9 -->
+      <div class="pc-card" data-gpu="rtx40">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">AMD Ryzen 5 5500</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 4060 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 10</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-r5-5500-rtx-4060-8-gb-16-gb-ssd-1000-gb-win-10-chernyi-139829223/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 10 -->
+      <div class="pc-card" data-gpu="rtx50">
+        <div class="pc-badge badge-new">Новинка</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">AMD Ryzen 5 5500</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 5050</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">16 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-r5-5500-rtx-5050-32-gb-ssd-2000-gb-win-11-pro-chernyi-148239680/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 11 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-13400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3060 12 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-13400f-rtx-3060-12-gb-32-gb-ssd-1000-gb-win-11-pro-chernyi-139829214/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 12 -->
+      <div class="pc-card" data-gpu="rtx30">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-12400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 3070 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">HDD</span>
+              <span class="spec-val">1000 ГБ + SSD 1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-12400f-rtx-3070-8-gb-32-gb-1000-gb-hdd-ssd-1024-gb-win-10-belyi-139954793/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 13 -->
+      <div class="pc-card" data-gpu="rtx40">
+        <div class="pc-badge badge-hit">Хит</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-14400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 4060 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-14400f-rtx-4060-32-gb-ssd-1000-gb-win-11-pro-chernyi-139829220/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 14 -->
+      <div class="pc-card" data-gpu="rtx40">
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-13400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 4060 Ti 8 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-13400f-rtx-4060-ti-8-gb-32-gb-ssd-1024-gb-win-11-pro-belyi-139896013/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 15 -->
+      <div class="pc-card" data-gpu="rtx50">
+        <div class="pc-badge badge-new">Новинка</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-12400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 5060</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-12400f-rtx-5060-32-gb-ssd-1000-gb-win-11-pro-chernyi-chernyi-147762138/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 16 -->
+      <div class="pc-card" data-gpu="rtx50">
+        <div class="pc-badge badge-new">Новинка</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-14400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 5060</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-14400f-rtx-5060-8-gb-32-gb-ssd-1000-gb-win-11-pro-belyi-148974890/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 17 -->
+      <div class="pc-card" data-gpu="rtx50">
+        <div class="pc-badge badge-new">Новинка</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i5-14400F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 5060 Ti</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i5-14400f-rtx-5060ti-32-gb-ssd-1000-gb-win-11-pro-belyi-belyi-147762130/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+      <!-- CARD 18 -->
+      <div class="pc-card" data-gpu="rtx50">
+        <div class="pc-badge badge-top">Топ сборка</div>
+        <div class="pc-img-wrap">
+          <div class="pc-img-placeholder">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            <span>Фото скоро</span>
+          </div>
+        </div>
+        <div class="pc-content">
+          <div class="pc-name">VELTRIX GAME</div>
+          <div class="pc-specs">
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <span class="spec-label">CPU</span>
+              <span class="spec-val">Intel Core i7-12700F</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h12"/></svg>
+              <span class="spec-label">GPU</span>
+              <span class="spec-val">RTX 5060 Ti</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 19V5M18 19V5M6 12h12"/></svg>
+              <span class="spec-label">RAM</span>
+              <span class="spec-val">32 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 15V9M12 15V9M17 15V9"/></svg>
+              <span class="spec-label">SSD</span>
+              <span class="spec-val">1000 ГБ</span>
+            </div>
+            <div class="spec-row">
+              <svg class="spec-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12l3 3 5-5"/></svg>
+              <span class="spec-label">OS</span>
+              <span class="spec-val">Windows 11 Pro</span>
+            </div>
+          </div>
+        </div>
+        <div class="pc-footer">
+          <hr class="pc-divider">
+          <a href="https://kaspi.kz/shop/p/veltrix-veltrix-i7-12700f-rtx-5060ti-32-gb-ssd-1000-gb-win-11-pro-belyi-belyi-chernyi-147762132/?c=750000000" target="_blank" class="btn-buy">Купить на Kaspi →</a>
+        </div>
+      </div>
+
+    </div><!-- /catalog-grid -->
+  </div>
+</div>
+
+<!-- CTA BOTTOM -->
+<div class="cta-bottom">
+  <div class="cta-bottom-inner">
+    <div class="cta-bottom-title">Не нашли нужный ПК?</div>
+    <div class="cta-bottom-sub">Соберём под ваш бюджет и задачи. Напишите нам — ответим в течение 30 минут.</div>
+    <a href="https://wa.me/77066607469" target="_blank" class="btn-wa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Написать в WhatsApp
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-copy">© VELTRIX 2024. Все права защищены. г. Алматы, мкр. Аксай-4, 44а</div>
+    <div class="footer-links">
+      <a href="./index.html">Главная</a>
+      <a href="./index.html#catalog">Каталог</a>
+      <a href="./index.html#configurator">Сборка на заказ</a>
+      <a href="https://wa.me/77066607469" target="_blank">+7 706 660 74 69</a>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOAT WA -->
+<a href="https://wa.me/77066607469" target="_blank" class="float-wa">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+  /* THEME */
+  function toggleTheme() {
+    const html = document.documentElement;
+    html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+
+  /* FILTER TABS */
+  const tabs = document.querySelectorAll('.filter-tab');
+  const cards = document.querySelectorAll('.pc-card');
+  const countEl = document.getElementById('catalogCount');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const filter = tab.dataset.filter;
+      let visible = 0;
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.gpu === filter;
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+      countEl.textContent = visible + ' ' + (visible === 1 ? 'модель' : visible < 5 ? 'модели' : 'моделей') + ' в наличии';
+    });
+  });
+</script>
+</body>
+</html>
